@@ -1,1 +1,0 @@
-{"virtualbox":{"/srv/salt":{"guestpath":"/srv/salt","hostpath":"C:/Users/jonde/docker-cluster-automation/salt","disabled":false,"__vagrantfile":true},"/home/vagrant/shared":{"create":true,"guestpath":"/home/vagrant/shared","hostpath":"C:/Users/jonde/docker-cluster-automation/shared","disabled":false,"__vagrantfile":true}}}
