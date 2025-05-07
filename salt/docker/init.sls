@@ -17,7 +17,7 @@ docker_service:
 
 docker_user_group:
   cmd.run:
-    - name: usermod -aG docker $SUDO_USER
-    - unless: groups $SUDO_USER | grep -q docker
+    - name: usermod -aG docker {{ grains['username'] }}
+    - unless: groups {{ grains['username'] }} | grep -q docker
     - require:
       - pkg: docker_packages
