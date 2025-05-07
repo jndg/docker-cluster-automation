@@ -72,9 +72,9 @@ Vagrant.configure("2") do |config|
     master.vm.hostname = "master"
       
       master.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "1024"]  # 1GB RAM
-      vb.customize ["modifyvm", :id, "--cpus", "1"]       # 1 CPU
-    end
+       vb.customize ["modifyvm", :id, "--memory", "1024"]  # 1GB RAM
+       vb.customize ["modifyvm", :id, "--cpus", "1"]       # 1 CPU
+      end
   end
   
   (1..2).each do |i|
@@ -86,6 +86,7 @@ Vagrant.configure("2") do |config|
       worker.vm.provider "virtualbox" do |vb|
         vb.customize ["modifyvm", :id, "--memory", "512"]   # 512MB RAM
         vb.customize ["modifyvm", :id, "--cpus", "1"]       # 1 CPU
+      end
     end
   end
 end
