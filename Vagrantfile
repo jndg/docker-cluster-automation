@@ -29,11 +29,7 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
-# Install Docker
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo systemctl enable docker && sudo systemctl start docker
-sudo usermod -aG docker vagrant
-newgrp docker
+
 MASTER_SCRIPT
 
 $minion_script = <<-MINION_SCRIPT
@@ -63,11 +59,6 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
-# Install Docker
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo systemctl enable docker && sudo systemctl start docker
-sudo usermod -aG docker vagrant
-newgrp docker
 MINION_SCRIPT
 
 Vagrant.configure("2") do |config|
@@ -79,6 +70,8 @@ Vagrant.configure("2") do |config|
     master.vm.provision :shell, inline: $master_script
     master.vm.network "private_network", ip: "192.168.10.10"
     master.vm.hostname = "master"
+    master.vm.memory = "1024"
+    master.vm.cpus = 1
   end
   
   (1..2).each do |i|
@@ -87,6 +80,8 @@ Vagrant.configure("2") do |config|
       worker.vm.provision :shell, inline: $minion_script
       worker.vm.network "private_network", ip: "192.168.10.#{10 + i}"
       worker.vm.hostname = "worker#{i}"
+      worker.vm.memory = "512"
+      worker.vm.cpus = 1
     end
   end
 end
