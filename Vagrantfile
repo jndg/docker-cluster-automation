@@ -70,8 +70,11 @@ Vagrant.configure("2") do |config|
     master.vm.provision :shell, inline: $master_script
     master.vm.network "private_network", ip: "192.168.10.10"
     master.vm.hostname = "master"
-    master.vm.memory = "1024"
-    master.vm.cpus = 1
+      
+      master.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "1024"]  # 1GB RAM
+      vb.customize ["modifyvm", :id, "--cpus", "1"]       # 1 CPU
+    end
   end
   
   (1..2).each do |i|
@@ -80,8 +83,9 @@ Vagrant.configure("2") do |config|
       worker.vm.provision :shell, inline: $minion_script
       worker.vm.network "private_network", ip: "192.168.10.#{10 + i}"
       worker.vm.hostname = "worker#{i}"
-      worker.vm.memory = "512"
-      worker.vm.cpus = 1
+      worker.vm.provider "virtualbox" do |vb|
+        vb.customize ["modifyvm", :id, "--memory", "512"]   # 512MB RAM
+        vb.customize ["modifyvm", :id, "--cpus", "1"]       # 1 CPU
     end
   end
 end
