@@ -40,8 +40,8 @@ sudo salt '*' state.apply docker
 ```
 ### 5. Initialize Docker Swarm
 ```bash
-sudo salt 'master' cmd.run 'docker swarm init --advertise-addr 192.168.10.10'
-sudo salt 'worker*' cmd.run 'docker swarm join --token <TOKEN> 192.168.10.10:2377'
+docker swarm init --advertise-addr 192.168.10.10'
+docker swarm'
 ```
 
 # Customizing the Cluster
