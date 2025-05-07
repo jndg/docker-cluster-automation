@@ -21,7 +21,7 @@ This project automates the creation of a Docker cluster using Vagrant and SaltSt
 
 ### 1. Clone the repository
 ```bash
-git clone [git@github.com:jndg/docker-cluster-automation.git](https://github.com/jndg/docker-cluster-automation.git)
+git clone https://github.com/jndg/docker-cluster-automation.git
 cd docker-cluster-automation
 ```
 ### 2. Start the cluster
