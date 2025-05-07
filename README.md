@@ -53,4 +53,3 @@ Edit these files to customize:
   ```/salt/docker/init.sls``` - Modify Docker configuration
 
   ```/salt/stack/web.sls``` - Add your own services
->>>>>>> dcd9239856ce73211cfb66359436e7c3c59f85cf
