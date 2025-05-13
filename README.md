@@ -5,7 +5,9 @@ my mini project
 
 # Docker Cluster with SaltStack
 
-This project automates the creation of a Docker cluster using Vagrant and SaltStack for infrastructure management.
+This project automates the creation of a Docker Swarm cluster using Vagrant and SaltStack for infrastructure management.
+
+![kuva](https://github.com/user-attachments/assets/f4d90746-6bfa-45d7-badc-3f181c1fefcc)
 
 ## Features
 - Automated cluster provisioning with Vagrant
@@ -35,8 +37,11 @@ $ sudo salt '*' state.apply docker
 ```
 ### 4. Initialize Docker Swarm
 ```bash
-$ docker swarm init --advertise-addr 192.168.10.10'
-$ docker swarm join --token <copy your token>
+$ sudo salt 'worker1' state.apply docker.swarm-init
+```
+join with your nodes
+```bash
+$ sudo salt 'worker2' cmd.run "docker swarm join --token <copy your token>"
 ```
 
 # Customizing the Cluster
