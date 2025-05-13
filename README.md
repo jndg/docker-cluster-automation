@@ -1,7 +1,8 @@
 <<<<<<< HEAD
 # docker-cluster-automation
+
 my mini project
-=======
+
 # Docker Cluster with SaltStack
 
 This project automates the creation of a Docker cluster using Vagrant and SaltStack for infrastructure management.
@@ -15,30 +16,24 @@ This project automates the creation of a Docker cluster using Vagrant and SaltSt
 ## Prerequisites
 - Vagrant (v2.2+)
 - VirtualBox or libvirt
-- Git
 
 ## Quick Start
 
-### 1. Clone the repository
-```bash
-$ git clone https://github.com/jndg/docker-cluster-automation.git
-cd docker-cluster-automation
-```
-### 2. Start the cluster
+### 1. Vagrant up
 ```bash
 $ vagrant up
 ```
-### 3. Configure SaltStack
+### 2. Configure SaltStack
 ```bash
 $ vagrant ssh master
 $ sudo salt-key -A -y  # Accept all worker keys
 ```
 
-### 4. Deploy Docker to all nodes
+### 3. Deploy Docker to all workers
 ```bash
 $ sudo salt '*' state.apply docker
 ```
-### 5. Initialize Docker Swarm
+### 4. Initialize Docker Swarm
 ```bash
 $ docker swarm init --advertise-addr 192.168.10.10'
 $ docker swarm join --token <copy your token>
